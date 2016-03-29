@@ -1,0 +1,83 @@
+html
+	head 
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible")
+		meta(name="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="description" content="Personal Page")
+		meta(name="author" content="xiuhong")
+		- var title = "前端自动化监控平台"
+		title #{title}
+		include ../includes/head
+	body
+		block nav
+			nav.navbar.navbar-default.navbar-static-top(role="navigation" style="margin-bottom:0")
+				div.navbar-header
+					button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.sr-only 
+					a.navbar-brand(href="javascript:;") 前端性能监控平台
+				ul.nav.navbar-top-links.navbar-right
+					li.dropdown
+						a.dropdown-toggle(data-toggle="dropdown" href="javascript:;")
+							i.fa.fa-envelope.fa-fw
+							i.fa.fa-caret-down
+						ul.dropdown-menu.dropdown-messages
+							li
+								a(href="javascript:;")
+									div
+										strong John Smith
+										span.pull-right.text-muted
+											em Yesterday
+									div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+							li.divider
+							li
+								a(href="javascript:;")
+									div
+										strong John Smith
+										span.pull-right.text-muted
+											em Yesterday
+									div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+
+					li.dropdown
+						a.dropdown-toggle(data-toggle="dropdown" href="javascript:;")
+							i.fa.fa-tasks.fa-fw
+							i.fa.fa-caret-down
+						ul.dropdown-menu.dropdown-messages
+							li
+								a(href="javascript:;")
+									div
+										strong John Smith
+										span.pull-right.text-muted
+											em Yesterday
+									div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+							li.divider
+							li
+								a(href="javascript:;")
+									div
+										strong John Smith
+										span.pull-right.text-muted
+											em Yesterday
+									div Lo
+				div.navbar-default.sidebar(role="navigation")
+					div.sidebar-nav.navbar-collapse
+						ul#side-menu.nav
+							li
+								a(href="javascript:;") 视觉感知测试
+									span.fa.arrow
+								ul.nav.nav-second-level
+									li
+										a(href="javascript:;") DPXDT
+									li
+										a(href="javascript:") VIFF
+							li 
+								a(href="javascript:;") 功能测试
+									span.fa.arrow
+								ul.nav.nav-second-level
+									li
+										a(href="javascript:;") karam
+									li
+										a(href="javascript:") jasmine
+			div#page-wrapper
+				block child-page

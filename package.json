@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "karma": "^0.13.21",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
+    "moment": "^2.11.1",
+    "mongodb": "^2.1.4",
+    "mongoose": "^4.3.7",
+    "path": "^0.12.7",
+    "underscore": "^1.8.3"
+  }
+}

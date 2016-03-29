@@ -1,0 +1,22 @@
+{
+  "name": "learn node",
+  "description": "imooc learn node -- movie list",
+  "main": "",
+  "authors": [
+    "xiuhong <xiuhong@mogujie.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
