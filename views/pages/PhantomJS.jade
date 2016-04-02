@@ -1,6 +1,17 @@
-extends ../layout
-
-block content
+extends ./layout
+block child-page
 	div.row
 		div.col-lg-12
-			h3.page-header PhantomJS
+			h3.page-header phantomjs
+	div.row
+		div.col-lg-6
+			form(role="form")
+				div.form-group
+					label 输入URL
+					input.form-control.url
+					button.btn.btn-default.excute(type="button") GO
+	div.row
+		div.col-xs-6.col-md-3
+			a.thumbnail.img-container(href="javascript:;")
+				img(src="/screenshot/aaa.png")
+	script(src="/js/phantomjs.js")

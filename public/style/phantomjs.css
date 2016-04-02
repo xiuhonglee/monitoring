@@ -1,0 +1,15 @@
+.img-container {
+	height: 300px;
+	overflow: hidden;
+}
+input.url {
+	width: 50%;
+	display: inline-block;
+}
+button.inline {
+	display: inline-block;
+}
+img {
+	display: block;
+	margin: 0 auto;
+}
