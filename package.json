@@ -1,31 +1,31 @@
 {
-  "name": "monitoring",
-  "version": "0.0.1",
-  "homepage": "http://xiuhonglee.com",
-  "repository": "https://github.com/xiuhonglee/monitoring",
-  "author": "xiuhong<hn2015likun@gmail.com>",
-  "scripts": {
-    "postinstall": "node_modules/.bin/bower install",
-    "test": "mocha"
-  },
-  "devDependencies": {
-    "body-parser": "^1.14.2",
-    "casperjs": "^1.1.0-beta5",
-    "express": "^4.13.4",
-    "gulp-phantomcss": "^0.1.1",
-    "jade": "^1.11.0",
-    "karma": "^0.13.21",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-jasmine": "^0.3.7",
-    "moment": "^2.11.1",
-    "mongodb": "^2.1.4",
-    "mongoose": "^4.3.7",
-    "path": "^0.12.7",
-    "phantom": "^2.0.10",
-    "requirejs": "^2.2.0",
-    "resemblejs": "^2.2.0",
-    "spooky": "^0.2.5",
-    "underscore": "^1.8.3",
-    "webpage": "^0.3.0"
-  }
+    "name": "monitoring",
+    "version": "0.0.1",
+    "homepage": "http://xiuhonglee.com",
+    "repository": "https://github.com/xiuhonglee/monitoring",
+    "author": "xiuhong<hn2015likun@gmail.com>",
+    "scripts": {
+        "postinstall": "node_modules/.bin/bower install",
+        "test": "mocha"
+    },
+    "devDependencies": {
+        "body-parser": "^1.14.2",
+        "casperjs": "^1.1.0-beta5",
+        "express": "^4.13.4",
+        "gulp-phantomcss": "^0.1.1",
+        "jade": "^1.11.0",
+        "karma": "^0.13.21",
+        "karma-chrome-launcher": "^0.2.2",
+        "karma-jasmine": "^0.3.7",
+        "moment": "^2.11.1",
+        "mongodb": "^2.1.4",
+        "mongoose": "^4.3.7",
+        "path": "^0.12.7",
+        "phantom": "^2.0.10",
+        "requirejs": "^2.2.0",
+        "resemblejs": "^2.2.0",
+        "spooky": "^0.2.5",
+        "underscore": "^1.8.3",
+        "webpage": "^0.3.0"
+    }
 }

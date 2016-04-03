@@ -1,22 +1,25 @@
 {
-    "name": "learn node",
-    "description": "monitoring the font-end page performance automaticlly",
-    "main": "",
-    "authors": [
-        "xiuhong <hn2015likun@gmail.com>"
-    ],
-    "license": "MIT",
-    "moduleType": [],
-    "homepage": "",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "public/libs",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "bootstrap": "~3.3.6"
-    }
+  "name": "learn node",
+  "description": "monitoring the font-end page performance automaticlly",
+  "main": "",
+  "authors": [
+    "xiuhong <hn2015likun@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  },
+  "devDependencies": {
+    "resemblejs": "~2.2.0"
+  }
 }
