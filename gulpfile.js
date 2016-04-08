@@ -1,16 +1,27 @@
-var gulp = require('gulp');
-var phantomcss = require('gulp-phantomcss');
+var gulp = require('gulp'),
+    server = require('gulp-develop-server'),
+    livereload = require('gulp-livereload');
 
-gulp.task('phantomcss', function() {
-	gulp.src('./testsuite.js')
-		.pipe(phantomcss({
-				'mismatchTolerance': 0.05,
-				'screenshots': 'screenshots',
-				'results': 'results',
-				'viewportSize': [1280, 800],
-			},
-			src: [
-				'phantomcss.js'
-			]
-	}));
+var options = {
+    path: './app.js'
+};
+
+var serverFiles = [
+    './app.js'
+];
+
+gulp.task('server:start', function() {
+    server.listen(options, livereload.listen);
+});
+
+// If server scripts change, restart the server and then livereload.
+gulp.task('default', ['server:start'], function() {
+
+    function restart(file) {
+        server.changed(function(error) {
+            if (!error) livereload.changed(file.path);
+        });
+    }
+
+    gulp.watch(serverFiles).on('change', restart);
 });

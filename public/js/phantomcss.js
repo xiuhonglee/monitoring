@@ -40,7 +40,6 @@ $(document).ready(function() {
 				setTimeout(function() {
 					$targetImg.attr('src', baseUrl + res.img);
 				}, 1000);
-
 			}
 		});
 	});

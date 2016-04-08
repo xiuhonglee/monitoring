@@ -11,10 +11,12 @@ var ScreenImg = require('./models/screenImg');
 
 mongoose.connect('mongodb://localhost/monitor');
 
+
 // 随机数生成函数
 var getRandomInt = function(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
 
 
 app.set('views', './views/pages');
@@ -70,6 +72,28 @@ app.get('/phantomjs', function(req, res) {
 	});
 });
 
+app.get('/phantomjs/getdata', function(req, res) {
+
+	var url = req.query.url,
+		phantom = require('phantom'),
+		t = Date.now();
+
+
+	phantom.create().then(function(ph) {
+		ph.createPage().then(function(page) {
+			page.open(url).then(function(status) {
+				console.log('status', status);
+				
+				res.json({
+					'title': document.title
+				});
+			});
+			phantom.exit();
+		});
+	});
+
+});
+
 // phantomcss
 app.get('/phantomcss', function(req, res) {
 	res.render('phantomcss', {});
@@ -118,75 +142,3 @@ app.get('/phantomcss/getTargetImg', function(req, res) {
 			});
 		});
 });
-
-
-
-// app.get('/phantomcss/getDiffImg', function(req, res) {
-// 	var url = req.query.url;
-// 	var phantom = require('phantom');
-// 	var resemble = require('resemblejs');
-// 	var img1, img2;
-
-// 	fs.readFile(__dirname + '/public/screenshot/baseImg/_1708875937.png', (err, data) => {
-// 		if (err) throw err;
-// 		img1 = data;
-// 		console.log('img1', img1);
-// 	});
-
-// 	fs.readFile(__dirname + '/public/screenshot/targetImg/_7596399160.png', (err, data) => {
-// 		if (err) throw err;
-// 		img2 = data;
-// 		console.log('img2', img2);
-// 	});
-
-// 	phantom.create()
-// 		.then(function(ph) {
-// 			ph.createPage().then(function(page) {
-// 				console.log(__dirname + '/public/screenshot/baseImg/_1708875937.png');
-// 				// var img1 = new Buffer(__dirname + '/public/screenshot/baseImg/3629484375.png', 'base64');
-// 				// var img2 = new Buffer(__dirname + '/public/screenshot/target/6753631523.png', 'base64');
-// 				// console.log('img1', img1);
-// 				// console.log('img2', img2);
-// 				console.log(_3629484375.png);
-// 				var diff = resemble('_3629484375.png')
-// 					.compareTo('_6753631523.png')
-// 					.ignoreColors()
-// 					.onComplete(function(data) {
-// 						console.log(data);
-// 					});
-
-
-// 				// resemble('_3629484375.png')
-// 				// 	.compareTo('_6753631523.png')
-// 				// 	.ignoreColors()
-// 				// 	.onComplete(function(data) {
-// 				// 		console.log(111);
-// 				// 		console.log(data);
-// 				// 		res.send({
-// 				// 			status: 'ok'
-// 				// 		});
-// 				// 	});
-
-// 			});
-// 		});
-// });
-
-// var compareImages = function(res) {
-// 	resemble.outputSettings({
-// 		largeImageThreshold: 0
-// 	});
-// 	var diff = resemble('')
-// 		.compareTo('')
-// 		.ignoreColors()
-// 		.onComplete(function(data) {
-// 			console.log(data);
-// 			var png = data.getDiffImage();
-// 			fs.writeFile('diff.png', png.data, null, function(err) {
-// 				if (err) {
-// 					throw 'error writing file: ' + err;
-// 				}
-// 				console.log('file written');
-// 			});
-// 			res.render('compare');
-// 		});
-// };
