@@ -2,5 +2,7 @@
 node_modules/*
 devperf/node_modules/*
 devperf/resPages/*
+gruntPhantomas/node_modules/*
+gruntphantomas/phantomas/*
 public/libs/*
 .csscomb.json

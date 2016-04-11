@@ -9,8 +9,13 @@ module.exports = function(grunt) {
                 ],
                 openResults: true,
                 timeout: 300,
-                numberOfRuns: 5,
-                resultsFolder: './resPages'
+                numberOfRuns: 2,
+                resultsFolder: './resPages',
+                openResults: true,
+                phantomasOptions: {
+                    reporter: 'json',
+                    filmStrip: false
+                }
             }
         }
     });
