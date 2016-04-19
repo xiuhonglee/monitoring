@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({
 // 存放静态资源
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.locals.moment = require('moment');
+// app.locals.moment = require('moment');
 app.listen(port);
 
 console.log('server start at port :' + port);
