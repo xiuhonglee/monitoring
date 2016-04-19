@@ -17,8 +17,6 @@ var getRandomInt = function(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-
-
 app.set('views', './views/pages');
 app.set('view engine', 'jade');
 

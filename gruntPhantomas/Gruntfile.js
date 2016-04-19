@@ -14,32 +14,39 @@ module.exports = function(grunt) {
                         'film-strip': false
                     },
                     assertions: {
-                        assetsWithQueryString: 3, // receive warning, when there are more than 3 assets with a query string
-                        bodyHTMLSize: 10500, // receive warning, when the bodyHTMLsize is bigger than 10500
-                        jsErrors: 0, // receive warning, when more than 0 JS errors appear
-                        gzipRequests: { // receive warning, when less compressed assets are loaded then 10 ( might be useful for checking server configurations )
-                            type: '<',
-                            value: 10
-                        }
-                    },
-                    group: {
-                        'TIMINGS': [
-                            'timeToFirstByte',
-                            'timeToLastByte',
-                            'timeToFirstCss',
-                            'timeToFirstJs',
-                            'timeToFirstImage',
-                            'fastestResponse',
-                            'slowestResponse',
-                            'onDOMReadyTime',
-                            'onDOMReadyTimeEnd',
-                            'windowOnLoadTime',
-                            'windowOnLoadTimeEnd',
-                            'httpTrafficCompleted',
-                            'timeBackend',
-                            'timeFrontend'
-                        ]
+                        'assetsWithQueryString': 3,
+                        'biggestLatency': 1400,
+                        'bodyHTMLSize': 10500,
+                        'commentsSize': 55,
+                        'consoleMessages': 0,
+                        'hiddenContentSize': 65,
+                        'jsErrors': 0,
+                        'gzipRequests': 8,
+                        'medianResponse': 400,
+                        'nodesWithInlineCSS': 0,
+                        'requests': 30,
+                        'timeToFirstImage': 800,
+                        'DOMelementsCount': 200,
+                        'DOMqueries': 10
                     }
+                    // group: {
+                    //     'TIMINGS': [
+                    //         'timeToFirstByte',
+                    //         'timeToLastByte',
+                    //         'timeToFirstCss',
+                    //         'timeToFirstJs',
+                    //         'timeToFirstImage',
+                    //         'fastestResponse',
+                    //         'slowestResponse',
+                    //         'onDOMReadyTime',
+                    //         'onDOMReadyTimeEnd',
+                    //         'windowOnLoadTime',
+                    //         'windowOnLoadTimeEnd',
+                    //         'httpTrafficCompleted',
+                    //         'timeBackend',
+                    //         'timeFrontend'
+                    //     ]
+                    // }
                 }
             }
         }
