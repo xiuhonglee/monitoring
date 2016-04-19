@@ -9,7 +9,7 @@ var app = express();
 var mongoose = require('mongoose');
 var ScreenImg = require('./models/screenImg');
 
-mongoose.connect('mongodb://localhost/monitor');
+// mongoose.connect('mongodb://localhost/monitor');
 
 
 // 随机数生成函数
