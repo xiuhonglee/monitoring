@@ -1,0 +1,64 @@
+extends ../layout
+block child-page
+	div.row
+		div.col-lg-12
+			h3.page-header Table
+
+	div.row
+		div.col-lg-12
+			div.panel.panel-default
+				div.panel-heading DataTables Advanced Tables
+				div.panel-body
+					div.dataTable_wrapper
+						table#dataTables-example.table.table-striped.table-bordered.table-hover(width="100%")
+							thead
+								tr
+									th Rendering engine
+									th Rendering engine
+									th Rendering engine
+									th Rendering engine
+									th Rendering engine
+							tbody
+								tr.odd.gradeX
+									td Trident
+									td Trident
+									td Trident
+									td.center 4
+									td.center 4
+								tr.even.gradeC
+									td Trident
+									td Trident
+									td Trident
+									td.center 4
+									td.center 4
+
+
+	div.row
+		div.col-lg-12
+			div.panel.panel-default
+				div.panel-heading Basic Table
+				div.panel-body
+					div.table-responsive
+						table.table
+							thead
+								tr
+									th #
+									th First Name
+									th First Name
+									th First Name
+							tbody
+								tr
+									td 1
+									td Mark
+									td Otto
+									td mdo
+								tr
+									td 2
+									td Mark
+									td Otto
+									td mdo
+								tr
+									td 3
+									td Mark
+									td Otto
+									td mdo

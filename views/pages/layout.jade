@@ -17,7 +17,7 @@ html
 						span.sr-only Toggle navigation
 						span.icon-bar
 						span.sr-only 
-					a.navbar-brand(href="javascript:;") 前端性能监控平台
+					a.navbar-brand(href="/") 前端性能监控平台
 				ul.nav.navbar-top-links.navbar-right
 					li.dropdown
 						a.dropdown-toggle(data-toggle="dropdown" href="javascript:;")
@@ -64,26 +64,14 @@ html
 					div.sidebar-nav.navbar-collapse
 						ul#side-menu.nav
 							li
-								a(href="javascript:;") 视觉感知测试
+								a(href="javascript:;") 组件库
 									span.fa.arrow
 								ul.nav.nav-second-level
 									li
-										a(href="/phantomcss") 页面差异对比
+										a(href="/components/table") Table
 							li 
-								a(href="javascript:;") 功能测试
-									span.fa.arrow
-								ul.nav.nav-second-level
-									li
-										a(href="javascript:;") 模拟用户操作
-									li
-										a(href="javascript:;") 单测通过率
-							li 
-								a(href="javascript:;") 性能监控
-									span.fa.arrow
-								ul.nav.nav-second-level
-									li
-										a(href="/phantomjs") 性能数据
-									li
-										a(href="javascript:") 异常告警
+								a(href="/") 监控列表页
+							//- li 
+							//- 	a(href="javascript:;") 性能监控
 			div#page-wrapper
 				block child-page
