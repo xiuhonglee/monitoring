@@ -28,21 +28,3 @@ gulp.task('default', ['server:start'], function() {
 
     gulp.watch(serverFiles).on('change', restart);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
