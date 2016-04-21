@@ -6,7 +6,7 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		meta(name="description" content="Personal Page")
 		meta(name="author" content="xiuhong")
-		title 前端自动化监控平台
+		title #{title}
 		include ../includes/head
 	body
 		block nav
@@ -73,9 +73,11 @@ html
 									li
 										a(href="/components/buttons") Buttons
 							li 
-								a(href="/") 监控列表页
+								a(href="/") 监控管理
 									span.fa.arrow
 								ul.nav.nav-second-level
+									li
+										a(href="/monitor/list") 监控列表
 									li
 										a(href="/monitor/createMonitor") 创建监控项
 							//- li 

@@ -6,10 +6,10 @@ block child-page
 
 	div.row
 		div.col-lg-6
-			form(role="form")
+			form(role="form" method="post", action="/control/monitor/createMonitor")
 				div.form-group
-					label 监控对象
-					input.form-control(placeholder="Input URL" data-toggle="tooltip" data-placement="right" title="Tooltip on right")
+					label(for="targetUrl") 监控对象
+					input#targetUrl.form-control(placeholder="Input URL" data-toggle="tooltip" data-placement="right" title="Tooltip on right")
 				div.form-group
 					label 监控名称
 					input.form-control(placeholder="Input Nickname")
@@ -19,14 +19,11 @@ block child-page
 						option 1分钟
 						option 2分钟
 						option 3分钟
-						option 5分钟
+						option(selected) 5分钟
 						option 10分钟
 						option 15分钟
 						option 30分钟
 						option 60分钟
 				button(type="submit").btn.btn-Info 保存
 				button(type="reset").btn.btn-Danger 重置   
-
-
-
-	script(src="createMonitor.js")
+	script(src="/js/monitor/createMonitor.js")
