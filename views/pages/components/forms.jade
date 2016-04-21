@@ -1,0 +1,22 @@
+extends ../layout
+block child-page
+	div.row
+		div.col-lg-12
+			h3.page-header Forms
+
+	div.row
+		div.col-lg-6
+			form(role="form")
+				div.form-group
+					label Text Input
+					input.form-control
+				div.form-group
+					label Text Input with Placeholder
+					input.form-control(placeholder="Enter text")
+				div.form-group.input-group
+					input.form-control(type="text")
+					span.input-group-btn
+						button.btn.btn-default(type="button" style="height:34px")
+							i.fa.fa-search
+				button(type="submit").btn.btn-default Submit Button
+				button(type="reset").btn.btn-default Reset Button      

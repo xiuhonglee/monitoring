@@ -5,9 +5,18 @@ module.exports = function(app) {
 		res.render('components/table', {});
 	});
 
+	app.get('/components/forms', function(req, res) {
+		res.render('components/forms', {});
+	});
+
 	// index page
-	app.get('/?index', function(req, res) {
+	app.get('/', function(req, res) {
 		res.render('index', {});
+	});
+
+	// index page
+	app.get('/monitor/createMonitor', function(req, res) {
+		res.render('monitor/createMonitor', {});
 	});
 
 };

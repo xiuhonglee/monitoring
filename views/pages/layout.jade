@@ -6,8 +6,7 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		meta(name="description" content="Personal Page")
 		meta(name="author" content="xiuhong")
-		- var title = "前端自动化监控平台"
-		title #{title}
+		title 前端自动化监控平台
 		include ../includes/head
 	body
 		block nav
@@ -69,8 +68,14 @@ html
 								ul.nav.nav-second-level
 									li
 										a(href="/components/table") Table
+									li
+										a(href="/components/forms") Forms
 							li 
 								a(href="/") 监控列表页
+									span.fa.arrow
+								ul.nav.nav-second-level
+									li
+										a(href="/monitor/createMonitor") 创建监控项
 							//- li 
 							//- 	a(href="javascript:;") 性能监控
 			div#page-wrapper
