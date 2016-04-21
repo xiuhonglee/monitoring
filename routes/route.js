@@ -4,9 +4,13 @@ module.exports = function(app) {
 	app.get('/components/table', function(req, res) {
 		res.render('components/table', {});
 	});
-
+	// 组件-form
 	app.get('/components/forms', function(req, res) {
 		res.render('components/forms', {});
+	});
+	// 组件-button
+	app.get('/components/buttons', function(req, res) {
+		res.render('components/buttons', {});
 	});
 
 	// index page
