@@ -29,5 +29,5 @@ block child-page
 										td= item.frequency/60000 + '分钟' 
 										td= moment(item.meta.updateAt).format('MM/DD/YYYY')
 										td 
-											a.btn.btn-link(href="javascript:;") 编辑
+											a.btn.btn-link(href="/monitor/update/#{item._id}") 编辑
 										td detail

@@ -1,5 +1,5 @@
 module.exports = function(app) {
-
+	var _ = require('underscore');
 	var Monitor = require('../mongodb/models/monitorModel');
 
 	// view: 组件-table
@@ -23,15 +23,8 @@ module.exports = function(app) {
 		});
 	});
 
-	// view: index page
-	app.get('/', function(req, res) {
-		res.render('index', {
-			title: '前端自动化监控平台'
-		});
-	});
-
 	// view: monitor list
-	app.get('/monitor/list', function(req, res) {
+	app.get('/monitor/index', function(req, res) {
 		Monitor.fetch(function(err, monitor) {
 			if (err) {
 				console.log(err);
@@ -75,6 +68,7 @@ module.exports = function(app) {
 		var monitorObj = JSON.parse(JSON.stringify(req.body.monitor));
 		var _monitor;
 		if (id !== 'undefined') {
+			console.log('monitorObj', monitorObj);
 			Monitor.findById(id, function(err, monitor) {
 				if (err) {
 					console.log(err);
@@ -84,7 +78,7 @@ module.exports = function(app) {
 					if (err) {
 						console.log(err);
 					}
-					res.redirect('/monitor/' + monitor._id);
+					res.redirect('/monitor/index');
 				});
 			});
 		} else {
@@ -97,7 +91,7 @@ module.exports = function(app) {
 				if (err) {
 					console.log(err);
 				}
-				res.redirect('/monitor/list');
+				res.redirect('/monitor/index');
 			});
 		}
 	});

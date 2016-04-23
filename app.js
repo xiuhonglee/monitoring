@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-var _ = require('underscore');
 var port = process.env.PORT || 8342;
 var app = express();
 
