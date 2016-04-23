@@ -2,28 +2,23 @@ extends ../layout
 block child-page
 	div.row
 		div.col-lg-12
-			h3.page-header 创建监控项
-
+			h3.page-header #{title}
 	div.row
 		div.col-lg-6
 			form(role="form" method="post", action="/control/monitor/createMonitor")
+				input(type="hidden", name="monitor[_id]", value="#{monitor._id}")
 				div.form-group
 					label(for="targetUrl") 监控对象
-					input#targetUrl.form-control(placeholder="Input URL" data-toggle="tooltip" data-placement="right" title="Tooltip on right")
+					input#targetUrl.form-control(type="text" placeholder="Input URL",name="monitor[targetUrl]" value="#{monitor.targetUrl}")
 				div.form-group
-					label 监控名称
-					input.form-control(placeholder="Input Nickname")
+					label(for="targetName") 监控名称
+					input#targetName.form-control(type="text" placeholder="Input Nickname",name="monitor[targetName]" value="#{monitor.targetName}")
 				div.form-group
 					label 监控频率
-					select.form-control
-						option 1分钟
-						option 2分钟
-						option 3分钟
-						option(selected) 5分钟
-						option 10分钟
-						option 15分钟
-						option 30分钟
-						option 60分钟
+					select.form-control(name="monitor[frequency]")
+						- var repeation = [1, 2, 3, 5, 10, 30, 60]
+						for item in repeation
+							option(selected = monitor.frequency == item*60000, value=item*60000) #{item}分钟
 				button(type="submit").btn.btn-Info 保存
 				button(type="reset").btn.btn-Danger 重置   
 	script(src="/js/monitor/createMonitor.js")

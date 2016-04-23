@@ -1,18 +1,32 @@
 var mongoose = require('mongoose');
 var monitorSchema = new mongoose.Schema({
-	targetUrl: String, 
+	targetUrl: String,
 	targetName: String,
-	quota: ['requests', 'timeToFirstByte', 'bodySize'],
-	created: {
-		type: Date,
-		default: Date.now
-	},	
-	updated: {
-		type: Date,
-		default: Date.now
+	frequency: Number, // millisecond
+	// quota: ['requests', 'timeToFirstByte', 'bodySize'],
+	meta: {
+		createAt: {
+			type: Date,
+			default: Date.now()
+		},
+		updateAt: {
+			type: Date,
+			default: Date.now()
+		}
 	}
 });
 
+monitorSchema.pre('save', function(next) {
+	if (this.isNew) {
+		this.meta.createAt = this.meta.updateAt = Date.now();
+	} else {
+		this.meta.updateAt = Date.now();
+	}
+	next();
+});
+
+// Methods and Statics: 
+// Each Schema can define instance and static methods for its model
 monitorSchema.statics = {
 	fetch: function(cb) {
 		return this
@@ -21,6 +35,8 @@ monitorSchema.statics = {
 	},
 	findById: function(id, cb) {
 		return this
+			// Declares the query a findOne operation. 
+			// When executed, the first found document is passed to the callback
 			.findOne({
 				_id: id
 			})

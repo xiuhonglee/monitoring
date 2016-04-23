@@ -16,31 +16,17 @@ block child-page
 									th 监控对象
 									th 名称
 									th 检测频率
-									th 检测点
-									th 告警状态
-									th 开关
+									th 创建时间
 									th 编辑
-									th 详情
+									//- th 详情
 							tbody
-								tr
-									td 1
-									td
-										a.btn.btn-link(href="javascript:;") http://m.mogujie.com/
-									td Mogujie(H5)
-									td 10分钟
-									td 3
-									td 正常
-									td 开/关
-									td edit
-									td detail
-								tr
-									td 2
-									td
-										a.btn.btn-link(href="javascript:;") http://www.mogujie.com/
-									td Mogujie(PC)
-									td 10分钟
-									td 3
-									td 正常
-									td 开/关
-									td edit
-									td detail
+								each item, index in monitor
+									tr(class="item-id-#{item._id}")
+										td = index+1
+										td
+											a.btn.btn-link(href="javascript:;") = item.targetUrl
+										td = item.targetName
+										td = item.frequency
+										td = moment(item.meta.updateAt).format('MM/DD/YYYY')
+										td = edit
+										td = detail
