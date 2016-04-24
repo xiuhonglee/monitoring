@@ -3,9 +3,6 @@ block child-page
 	div.row
 		div.col-lg-12
 			h3.page-header Buttons
-	
-
-
 	div.row
 		div.col-lg-6
 			h4 Buttons types
@@ -16,11 +13,12 @@ block child-page
 				button(type="button").btn.btn-Info Info
 				button(type="button").btn.btn-Warning Warning
 				button(type="button").btn.btn-Danger Danger
+				button(type="button").btn.btn-link Link
 			h4 Disable Buttons
 			p
 				button(type="button").btn.btn-default.disabled Default
 				button(type="button").btn.btn-primary.disabled primary
-				button(type="button").btn.btn-success.disabled success
+				button(type="button").btn.btn-success.disabled btn-success
 				button(type="button").btn.btn-Info.disabled Info
 				button(type="button").btn.btn-Warning.disabled Warning
 				button(type="button").btn.btn-Danger.disabled Danger
@@ -30,6 +28,13 @@ block child-page
 				button(type="button").btn.btn-primary Default button
 				button(type="button").btn.btn-primary.btn-sm Small button
 				button(type="button").btn.btn-primary.btn-xs Mini button
-
-
+	div.row		
+		div.col-lg-6
+			h4 滑动开关	
+			p
+				div.wrapper(style="max-height:30px;overflow:hidden;")
+					input(type="checkbox", name="monitor-switch", data-off-color="warning")
+					script(type="text/javascript").
+						$("[name='monitor-switch']").bootstrapSwitch();
+	
 

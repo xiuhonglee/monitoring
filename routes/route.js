@@ -62,7 +62,7 @@ module.exports = function(app) {
 		}
 	});
 
-	// control: create monitor
+	// control: create/update monitor
 	app.post('/control/monitor/createMonitor', function(req, res) {
 		var id = req.body.monitor._id;
 		var monitorObj = JSON.parse(JSON.stringify(req.body.monitor));
@@ -95,4 +95,24 @@ module.exports = function(app) {
 			});
 		}
 	});
+
+	// control: del monitor item
+	app.delete('/control/monitor/deleteMonitor', function(req, res) {
+		var id = req.query.id;
+		if (id) {
+			Monitor.remove({
+				_id: id
+			}, function(err, monitor) {
+				if (err) {
+					console.log(err);
+				} else {
+					res.json({
+						success: 1001
+					});
+				}
+			})
+		}
+	});
+
+
 };

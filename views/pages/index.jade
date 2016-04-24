@@ -17,8 +17,10 @@ block child-page
 									th 名称
 									th 检测频率
 									th 创建时间
+									th 开关
 									th 编辑
 									th 详情
+									th 删除
 							tbody
 								each item, index in monitor
 									tr(class="item-id-#{item._id}")
@@ -28,6 +30,12 @@ block child-page
 										td= item.targetName
 										td= item.frequency/60000 + '分钟' 
 										td= moment(item.meta.updateAt).format('MM/DD/YYYY')
+										td
+											input(type="checkbox",data-id="#{item._id}",name="monitor-switch",data-off-color="warning",data-size="small")
 										td 
-											a.btn.btn-link(href="/monitor/update/#{item._id}") 编辑
-										td detail
+											a(type="button",href="/monitor/update/#{item._id}").btn.btn-success.btn-sm 编辑
+										td 
+											button(type="button").btn.btn-Info.btn-sm 详情
+										td 
+											button(type="button",data-id="#{item._id}").btn.btn-Danger.btn-sm.del 删除
+	script(src="/js/index.js")
