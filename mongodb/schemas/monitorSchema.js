@@ -31,6 +31,7 @@ monitorSchema.statics = {
 	fetch: function(cb) {
 		return this
 			.find({})
+			.lean()
 			.exec(cb)
 	},
 	findById: function(id, cb) {

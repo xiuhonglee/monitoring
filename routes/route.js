@@ -1,5 +1,7 @@
 module.exports = function(app) {
 	var _ = require('underscore');
+	var fs = require('fs');
+	var phantomas = require('phantomas');
 	var Monitor = require('../mongodb/models/monitorModel');
 
 	// view: 组件-table
@@ -24,6 +26,17 @@ module.exports = function(app) {
 	});
 
 	// view: monitor list
+	app.get('/', function(req, res) {
+		Monitor.fetch(function(err, monitor) {
+			if (err) {
+				console.log(err);
+			}
+			res.render('index', {
+				title: '监控列表',
+				monitor: monitor
+			});
+		});
+	});
 	app.get('/monitor/index', function(req, res) {
 		Monitor.fetch(function(err, monitor) {
 			if (err) {
@@ -34,7 +47,6 @@ module.exports = function(app) {
 				monitor: monitor
 			});
 		});
-
 	});
 
 	// view: create monitor page
@@ -68,7 +80,6 @@ module.exports = function(app) {
 		var monitorObj = JSON.parse(JSON.stringify(req.body.monitor));
 		var _monitor;
 		if (id !== 'undefined') {
-			console.log('monitorObj', monitorObj);
 			Monitor.findById(id, function(err, monitor) {
 				if (err) {
 					console.log(err);
@@ -96,6 +107,38 @@ module.exports = function(app) {
 		}
 	});
 
+	// control: get metrics through phantomas
+	app.get('/control/monitor/getMetrics', function(req, res) {
+		var id = req.query.id,
+			url = req.query.url;
+		if (id) {
+			var task = phantomas(url, {
+				'assert-requests': 10,
+				'analyze-css': true
+			}, function(err, json, results) {
+				if (err) {
+					console.log('get metrics err: ', err)
+				}
+				var metricsObj = JSON.parse(JSON.stringify(json));
+				Monitor.findById(id, function(err, monitor) {
+					if (err) {
+						console.log(err);
+					}
+					_monitor = _.extend(monitor, metricsObj);
+					// console.log('_monitor', _monitor);
+					_monitor.save(function(err, monitor) {
+						if (err) {
+							console.log(err);
+						}
+						res.json(monitor);
+						// res.redirect('/monitor/index');
+					});
+				});
+
+			});
+		}
+	});
+
 	// control: del monitor item
 	app.delete('/control/monitor/deleteMonitor', function(req, res) {
 		var id = req.query.id;
@@ -113,6 +156,4 @@ module.exports = function(app) {
 			})
 		}
 	});
-
-
 };

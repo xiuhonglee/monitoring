@@ -50,8 +50,6 @@ gulp.task('default', ['server:start'], function() {
     // gulp.watch(htmlCssJsFile).on('change', function(file) {
     //     livereload.changed(file.path);
     // });
-
-
 });
 
 

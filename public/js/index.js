@@ -13,9 +13,20 @@ $(document).ready(function() {
 			var $target = $(evt.target),
 				id = $target.data('id'),
 				$tr = $('.item-id-' + id);
+			var targetUrl = $tr.find('.targetUrl').text();
 			// 开关必须关掉才可删除监控项
 			if (state) {
 				$tr.find('.btn-Danger').addClass('disabled');
+				$.ajax({
+					type: 'GET', 
+					url: '/control/monitor/getMetrics',
+					data: {
+						id: id,
+						url: targetUrl
+					}
+				}).done(function(res) {
+					// TODO
+				});
 			} else {
 				$tr.find('.btn-Danger').removeClass('disabled')
 			}
@@ -38,7 +49,4 @@ $(document).ready(function() {
 			}
 		});
 	});
-
-
-
 });
