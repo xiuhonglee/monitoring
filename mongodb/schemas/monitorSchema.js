@@ -3,7 +3,6 @@ var monitorSchema = new mongoose.Schema({
 	targetUrl: String,
 	targetName: String,
 	frequency: Number, // millisecond
-	// quota: ['requests', 'timeToFirstByte', 'bodySize'],
 	meta: {
 		createAt: {
 			type: Date,

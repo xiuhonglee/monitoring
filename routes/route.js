@@ -117,24 +117,22 @@ module.exports = function(app) {
 				'analyze-css': true
 			}, function(err, json, results) {
 				if (err) {
-					console.log('get metrics err: ', err)
+					console.log('get metrics err: ', err);
 				}
 				var metricsObj = JSON.parse(JSON.stringify(json));
+				console.log(metricsObj);
 				Monitor.findById(id, function(err, monitor) {
 					if (err) {
 						console.log(err);
 					}
 					_monitor = _.extend(monitor, metricsObj);
-					// console.log('_monitor', _monitor);
 					_monitor.save(function(err, monitor) {
 						if (err) {
 							console.log(err);
 						}
-						res.json(monitor);
-						// res.redirect('/monitor/index');
+						res.json(metricsObj);
 					});
 				});
-
 			});
 		}
 	});
