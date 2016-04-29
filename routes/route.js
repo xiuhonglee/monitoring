@@ -125,6 +125,7 @@ module.exports = function(app) {
 					if (err) {
 						console.log(err);
 					}
+					console.log(metricsObj);
 					_monitor = _.extend(monitor, metricsObj);
 					_monitor.save(function(err, monitor) {
 						if (err) {
