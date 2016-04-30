@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+console.log('ping jenkins');
+
 // 用来格式化JavaScript时间
 app.locals.moment = require('moment');
 // app.local: 应用程序本地变量会附加给所有的在这个应用程序内渲染的模板。 
