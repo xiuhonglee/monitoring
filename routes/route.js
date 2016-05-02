@@ -1,4 +1,5 @@
 module.exports = function(app) {
+
 	var _ = require('underscore');
 	var fs = require('fs');
 	var phantomas = require('phantomas');
@@ -9,12 +10,38 @@ module.exports = function(app) {
 	var conJob = function(id, url, frequency) {
 		var intervel = frequency / 1000 / 60;
 		var timer = intervel < 60 ? intervel.toString() + ' * * * * *' : '* 1 * * * *';
-		timer = '* * * * * *';
-		console.log('timer', timer);
+		timer = '15 * * * * *';
 		return schedule.scheduleJob(timer, function(id, url) {
-			console('phantomas', phantomas);
-		});
+			phantomas(url, {
+				'assert-requests': 10,
+				'analyze-css': true
+			}, function(err, json, results) {
+				if (err) {
+					console.log('get metrics err: ', err);
+				}
+				var metricsObj = json;
+				Monitor.findById(id, function(err, monitor) {
+					if (err) {
+						console.log(err);
+					}
+					var _monitor = new Monitor(monitor);
+					var itemObj = {},
+						date = (+new Date()).toString();
+					itemObj[date] = metricsObj;
+					// monitor
+					_monitor.metrics.push(itemObj);
+					_monitor.save(function(err, monitor) {
+						if (err) {
+							console.log(err);
+						}
+						// res.json(metricsObj);
+					});
+				});
+			});
+		}.bind(null, id, url));
 	};
+
+
 
 	// view: 组件-table
 	app.get('/components/table', function(req, res) {
@@ -135,36 +162,10 @@ module.exports = function(app) {
 			url = req.query.url,
 			frequency = req.query.frequency;
 		if (id) {
-			// conJob(id, url, frequency);
-			phantomas(url, {
-				'assert-requests': 10,
-				'analyze-css': true
-			}, function(err, json, results) {
-				if (err) {
-					console.log('get metrics err: ', err);
-				}
-				var metricsObj = JSON.parse(JSON.stringify(json));
-				Monitor.findById(id, function(err, monitor) {
-					if (err) {
-						console.log(err);
-					}
-					var _monitor = new Monitor(monitor);
-					var itemObj = {},
-					 	date = (+new Date()).toString();
-					itemObj[date] = metricsObj;
-					// monitor
-					_monitor.metrics.push(itemObj);
-					_monitor.save(function(err, monitor) {
-						if (err) {
-							console.log(err);
-						}
-						res.json(metricsObj);
-					});
-				});
-			});
+			// 开启监控
+			conJob(id, url, frequency);
 		}
 	});
-
 
 	// control: del monitor item
 	app.delete('/control/monitor/deleteMonitor', function(req, res) {
