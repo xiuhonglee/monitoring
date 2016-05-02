@@ -16,8 +16,8 @@ var options = {
 
 var serverFiles = [
     './app.js',
-    './routes/*',
-    './mongodb/*'
+    './routes/**/*.js',
+    './mongodb/**/*.js'
 ];
 
 var htmlCssJsFile = [

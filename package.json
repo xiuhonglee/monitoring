@@ -22,6 +22,7 @@
     "moment": "^2.13.0",
     "mongodb": "^2.1.4",
     "mongoose": "^4.3.7",
+    "node-schedule": "^1.1.0",
     "path": "^0.12.7",
     "phantomas": "^1.15.1",
     "phantomjs": "^2.1.7",

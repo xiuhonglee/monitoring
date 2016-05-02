@@ -28,14 +28,31 @@ block child-page
 										td
 											a.btn.btn-link.targetUrl(href="javascript:;")= item.targetUrl
 										td= item.targetName
-										td= item.frequency/60000 + '分钟' 
+										td.frequency(data-frequency= item.frequency)= item.frequency/60000 + '分钟' 
 										td= moment(item.meta.updateAt).format('MM/DD/YYYY')
 										td
-											input(type="checkbox",data-id="#{item._id}",name="monitor-switch",data-off-color="warning",data-size="small")
+											input(type="checkbox",data-id="#{item._id}",name="monitor-switch",checked=item.state data-off-color="warning",data-size="small")
 										td 
 											a(type="button",href="/monitor/update/#{item._id}").btn.btn-success.btn-sm 编辑
 										td 
-											button(type="button").btn.btn-Info.btn-sm 详情
+											a(type="button",href="/gruntphantomas/phantomas/index").btn.btn-success.btn-sm 详情
 										td 
 											button(type="button",data-id="#{item._id}").btn.btn-Danger.btn-sm.del 删除
 	script(src="/js/index.js")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

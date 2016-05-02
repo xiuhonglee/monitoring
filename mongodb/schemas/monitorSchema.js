@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
-var monitorSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+
+var monitorSchema = Schema({
 	targetUrl: String,
 	targetName: String,
-	frequency: Number, // millisecond
+	frequency: Number, 
+	state: Boolean,
+	metrics: [Schema.Types.Mixed],
 	meta: {
 		createAt: {
 			type: Date,

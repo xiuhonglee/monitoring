@@ -13,7 +13,8 @@ $(document).ready(function() {
 			var $target = $(evt.target),
 				id = $target.data('id'),
 				$tr = $('.item-id-' + id);
-			var targetUrl = $tr.find('.targetUrl').text();
+			var targetUrl = $tr.find('.targetUrl').text(),
+				frequency = $tr.find('.frequency').data('frequency');
 			// 开关必须关掉才可删除监控项
 			if (state) {
 				$tr.find('.btn-Danger').addClass('disabled');
@@ -22,7 +23,8 @@ $(document).ready(function() {
 					url: '/control/monitor/getMetrics',
 					data: {
 						id: id,
-						url: targetUrl
+						url: targetUrl,
+						frequency: frequency
 					}
 				}).done(function(res) {
 					// TODO

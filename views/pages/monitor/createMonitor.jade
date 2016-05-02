@@ -19,6 +19,14 @@ block child-page
 						- var repeation = [1, 2, 3, 5, 10, 30, 60]
 						for item in repeation
 							option(selected = monitor.frequency == item*60000, value=item*60000) #{item}分钟
+				div.form-group
+					label 开/关
+					label.radio-inline
+						input(type="radio" name="monitor[state]" value="true" checked=monitor.state == true)
+						| on
+					label.radio-inline
+						input(type="radio" name="monitor[state]" value="false" checked=monitor.state == false)
+						| off
 				button(type="submit").btn.btn-Info 保存
 				button(type="reset").btn.btn-Danger 重置   
 	script(src="/js/monitor/createMonitor.js")
