@@ -25,6 +25,7 @@
     "metisMenu": "^2.5.0",
     "font-awesome": "^4.6.1",
     "jquery": "^2.2.3",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "d3": "~3.5.16"
   }
 }

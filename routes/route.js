@@ -41,8 +41,6 @@ module.exports = function(app) {
 		}.bind(null, id, url));
 	};
 
-
-
 	// view: 组件-table
 	app.get('/components/table', function(req, res) {
 		res.render('components/table', {
@@ -63,12 +61,6 @@ module.exports = function(app) {
 			title: 'Buttons组件'
 		});
 	});
-
-	// view: 结果页
-	app.get('/gruntphantomas/phantomas/index', function(req, res) {
-		res.render('gruntphantomas/phantomas/index', {});
-	});
-
 
 	// view: monitor list
 	app.get('/', function(req, res) {
@@ -119,6 +111,31 @@ module.exports = function(app) {
 			});
 		}
 	});
+
+	// admin report 
+	app.get('/report/analyze/:id', function(req, res) {
+		var id = req.params.id;
+		if (id) {
+			Monitor.findById(id, function(err, monitor) {
+				res.render('report/visual', {
+					title: '数据可视化',
+					monitor: monitor
+				});
+			});
+		}
+	});
+
+	// 获取性能数据
+	app.get('/control/report/getMetrics', function(req, res) {
+		var id = req.query.id;
+		if (id) {
+			Monitor.findById(id, function(err, monitor) {
+				res.json(monitor);
+			});
+		}
+	});
+
+
 
 	// control: create/update monitor
 	app.post('/control/monitor/createMonitor', function(req, res) {

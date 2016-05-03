@@ -1,0 +1,23 @@
+extends ../layout
+block child-page
+	link(rel='stylesheet', href="/style/report/visual.css")
+	div.row
+		input(type="hidden", name="monitor[_id]", value="#{monitor._id}")
+		div.col-lg-12
+			h3.page-header #{monitor.targetName}
+	div.row
+		div.col-lg-6
+
+	div.row
+		div.col-lg-12
+			div.panel.panel-default
+				div.panel-heading 首字节时间 
+				div.panel-body.svg-container
+
+
+	
+	script(src="/libs/d3/d3.js")
+	script(src="/js/d3/visual.js")
+
+
+	
