@@ -1,6 +1,24 @@
 var gulp = require('gulp'),
     path = require('path');
 
+
+var uglify = require('gulp-uglify');
+var pump = require('pump');
+
+gulp.task('compress', function (cb) {
+  pump([
+        gulp.src('lib/*.js'),
+        uglify(),
+        gulp.dest('dist')
+    ],
+    cb
+  );
+});
+
+
+
+
+
 var jade = require('gulp-jade'),
     server = require('gulp-develop-server'),
     livereload = require('gulp-livereload');

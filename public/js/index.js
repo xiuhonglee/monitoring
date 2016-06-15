@@ -1,10 +1,3 @@
-// $(function() {
-// 	$("#menu-toggle").click(function(e) {
-// 		e.preventDefault();
-// 		$("#wrapper").toggleClass("toggled");
-// 	});
-// });
-
 $(document).ready(function() {
 	// 滑动开关
 	$("input[name='monitor-switch']")

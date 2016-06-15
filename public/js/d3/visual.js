@@ -13,6 +13,8 @@ $(document).ready(function() {
 			var xdate = [],
 				bodySize = [];
 
+			var formatDate = d3.time.format("%d-%b-%y");
+
 			res.metrics.forEach(function(item, index) {
 				for (key in item) {
 					xdate.push(key);
@@ -35,26 +37,35 @@ $(document).ready(function() {
 					top: 20,
 					right: 20,
 					bottom: 30,
-					left: 50
+					left: 60
 				},
 				width = 900 - margin.left - margin.right,
 				height = 400 - margin.top - margin.bottom;
 
-			var formatDate = d3.time.format("%d-%b-%y");
 
 			var x = d3.time.scale()
+				.domain(d3.extent(dataset, function(d) {
+					return d.date;
+				}))
 				.range([0, width]);
 
+
 			var y = d3.scale.linear()
+				.domain([0, d3.max(dataset, function(d) {
+					return d.close;
+				})])
 				.range([height, 0]);
+
 
 			var xAxis = d3.svg.axis()
 				.scale(x)
-				.orient("bottom");
+				.orient("bottom")
+				.ticks(20);;
 
 			var yAxis = d3.svg.axis()
 				.scale(y)
-				.orient("left");
+				.orient("left")
+				.ticks(15);;
 
 			var line = d3.svg.line()
 				.x(function(d) {
@@ -62,7 +73,8 @@ $(document).ready(function() {
 				})
 				.y(function(d) {
 					return y(d.close);
-				});
+				})
+				.interpolate('bundle');;
 
 			var svg = d3.select(".svg-container").append("svg")
 				.attr("width", width + margin.left + margin.right)
@@ -91,20 +103,12 @@ $(document).ready(function() {
 				.attr("y", 6)
 				.attr("dy", ".71em")
 				.style("text-anchor", "end")
-				.text("用时 (ms)");
+				.text("bodySize (kb)");
 
 			svg.append("path")
 				.datum(dataset)
 				.attr("class", "line")
 				.attr("d", line);
-
-			function type(d) {
-				d.date = formatDate.parse(d.date);
-				d.close = +d.close;
-				return d;
-			}
-
-
 		}
 
 	});

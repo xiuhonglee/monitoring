@@ -7,39 +7,39 @@ module.exports = function(app) {
 	var schedule = require('node-schedule');
 
 	// test cronJob
-	var conJob = function(id, url, frequency) {
-		var intervel = frequency / 1000 / 60;
-		var timer = intervel < 60 ? intervel.toString() + ' * * * * *' : '* 1 * * * *';
-		timer = '15 * * * * *';
-		return schedule.scheduleJob(timer, function(id, url) {
-			phantomas(url, {
-				'assert-requests': 10,
-				'analyze-css': true
-			}, function(err, json, results) {
-				if (err) {
-					console.log('get metrics err: ', err);
-				}
-				var metricsObj = json;
-				Monitor.findById(id, function(err, monitor) {
-					if (err) {
-						console.log(err);
-					}
-					var _monitor = new Monitor(monitor);
-					var itemObj = {},
-						date = (+new Date()).toString();
-					itemObj[date] = metricsObj;
-					// monitor
-					_monitor.metrics.push(itemObj);
-					_monitor.save(function(err, monitor) {
-						if (err) {
-							console.log(err);
-						}
-						// res.json(metricsObj);
-					});
-				});
-			});
-		}.bind(null, id, url));
-	};
+	// var conJob = function(id, url, frequency) {
+	// 	var intervel = frequency / 1000 / 60;
+	// 	var timer = intervel < 60 ? intervel.toString() + ' * * * * *' : '* 1 * * * *';
+	// 	var count = 0;
+	// 	return schedule.scheduleJob(timer, function(id, url) {
+	// 		phantomas(url, {
+	// 			'assert-requests': 10,
+	// 			'analyze-css': true
+	// 		}, function(err, json, results) {
+	// 			if (err) {
+	// 				console.log('get metrics err: ', err);
+	// 			}
+	// 			var metricsObj = json;
+	// 			Monitor.findById(id, function(err, monitor) {
+	// 				if (err) {
+	// 					console.log(err);
+	// 				}
+	// 				var _monitor = new Monitor(monitor);
+	// 				var itemObj = {},
+	// 					date = (+new Date()).toString();
+	// 				itemObj[date] = metricsObj;
+	// 				// monitor
+	// 				_monitor.metrics.push(itemObj);
+	// 				_monitor.save(function(err, monitor) {
+	// 					if (err) {
+	// 						console.log(err);
+	// 					}
+	// 					// res.json(metricsObj);
+	// 				});
+	// 			});
+	// 		});
+	// 	}.bind(null, id, url));
+	// };
 
 	// view: 组件-table
 	app.get('/components/table', function(req, res) {
@@ -140,9 +140,7 @@ module.exports = function(app) {
 	// control: create/update monitor
 	app.post('/control/monitor/createMonitor', function(req, res) {
 		var id = req.body.monitor._id;
-		console.log('req.body.monitor', req.body.monitor);
 		var monitorObj = JSON.parse(JSON.stringify(req.body.monitor));
-		console.log('monitorObj', monitorObj);
 		var _monitor;
 		if (id !== 'undefined') {
 			Monitor.findById(id, function(err, monitor) {
